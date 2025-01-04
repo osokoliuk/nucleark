@@ -48,10 +48,7 @@ module IGM_ISM_ODE = {
   def make_ic [n] {x = x: f64, y = y: [n]f64, dx = dx: f64} : {x: f64, y: [n]f64, dx: f64} = {x, y, dx}
 
   def f [n] {x = x: f64, y = y: [n]f64} : [n]f64 =
-    let zero_arr = replicate n 0
-    let zero_arr[0] = -y[]
-    -- First ODE
-    let zero_arr[1] = y[1]
-    -- Second ODE
-    in zero_arr
+    -- First and Second coupled ODE's encoded into an array
+    let func_arr = [-y[0],-y[1]] :> [n]f64
+    in func_arr
 }
