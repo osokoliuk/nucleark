@@ -26,6 +26,10 @@ def IMF (m: f64) (kind_IMF: #Kroupa | #Salpeter | #Chabrier) : f64 =
     else m ** (-1.3)
 
 --def O_w
+def O_w (z: f64) (Pk: []f64) (kind_HMF: #ST | #Tinker) (kind_SMF: #double | #behroozi | #emerge) : f64 =
+-- Leftover remnant mass, taken from Iben & Tutukov 1984
+  let mR: f64 = if m <= 6.8 then 0.11 * m + 0.45 else 1.5
+  in 1
 
 -- Exact form of dx/dy = f(x,y0,y1,...,yn)
 module IGM_ISM_ODE = {
