@@ -38,7 +38,7 @@ def Wf (k: []f64) (R: f64) : []f64 =
 -- Cosmic density variance (not squared!), P(k) is obtained via CAMB python interface
 def sigma_M (Mh: []f64) (Pk: []f64) : ([]f64) =
   let R = (2.0 * GN * Mh / (Omegam0 * H0 ** 2 * c ** 3)) ** (1 / 2)
-  let sigma2 = simpsons (map3 (\x y z -> x ** 2 / (2.0 * f64.pi ** 2) * y * z ** 2) k_arr Pk Wf (k_arr) (R))
+  let sigma2 = map3 (\x y z -> x ** 2 / (2.0 * f64.pi ** 2) * y * z ** 2) k_arr Pk Wf (k_arr) (R) |> simpsons
   in map (\x -> x ** (1.0 / 2.0)) sigma2
 
 -- First crossing distributions for Sheth-Tormen and Tinker halo mass functions

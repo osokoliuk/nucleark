@@ -12,7 +12,7 @@ def IMF (m: f64) (kind_IMF: #Kroupa | #Salpeter | #Chabrier) : f64 =
   case #Kroupa ->
     if m < 0.08
     then k0 * m ** alpha0
-    else if m >= 0.08 and m < 0.5
+    else if m >= 0.08 && m < 0.5
     then k1 * m ** alpha1
     else if m >= 0.5
     then k2 * m ** alpha2
@@ -45,7 +45,7 @@ module IGM_ISM_ODE = {
   def divide (x: t) (y: t) : t = x / y
   def multiply (x: t) (y: t) : t = x * y
 
-  def make_ic [n] {x = x: f64, y = y: [n]f64, dx = dx: f64} : {x: f64, y: [n]f64, dx: f64} = {x, y, dx}
+  def make_ic [n] {x = x: f64, y = y: [n]f64, dx = dx: f64} : vec = {x, y, dx}
 
   def f [n] {x = x: f64, y = y: [n]f64} : [n]f64 =
     -- First and Second coupled ODE's encoded into an array

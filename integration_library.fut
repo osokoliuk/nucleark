@@ -111,7 +111,7 @@ module simpsons (f_input: integral) = {
     let grad4f_b = (vjp f_input.f a 4f64)
     -- Automatic differentiation around b
     let abs_arr = map abs_value [grad4f_a, grad4f_b]
-    let (max_value, idx) = max_arr_idx (abs_arr)
+    let (max_value, _) = max_arr_idx (abs_arr)
     let err = 1.0 / 180.0 * dx ** 4 * (b - a) * max_value
     -- Upper bound for error with n subdivisions
     in err
